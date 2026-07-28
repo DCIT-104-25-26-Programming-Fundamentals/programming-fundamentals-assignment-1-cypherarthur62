@@ -49,3 +49,78 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def print_fibonacci_terms(n):
+    """Print the first n terms of the Fibonacci sequence."""
+    if n <= 0:
+        print("Error: Please enter a positive integer.")
+        return
+    
+    fib_sequence = []
+    a, b = 0, 1
+    
+    for _ in range(n):
+        fib_sequence.append(a)
+        a, b = b, a + b
+    
+    print("Fibonacci sequence:", " ".join(map(str, fib_sequence)))
+
+
+def is_fibonacci_number(num):
+    """Check if a number belongs to the Fibonacci sequence."""
+    if num < 0:
+        return False
+    
+    a, b = 0, 1
+    
+    while a < num:
+        a, b = b, a + b
+    
+    return a == num
+
+
+def check_fibonacci_number(num):
+    """Check and print whether a number is a Fibonacci number."""
+    if is_fibonacci_number(num):
+        print(f"{num} is a Fibonacci number.")
+    else:
+        print(f"{num} is NOT a Fibonacci number.")
+
+
+def main():
+    """Main function to run the Fibonacci program."""
+    while True:
+        print("\n" + "="*40)
+        print("FIBONACCI SEQUENCE")
+        print("="*40)
+        print("1. Print first N terms")
+        print("2. Check if a number is a Fibonacci number")
+        print("3. Quit")
+        
+        choice = input("\nEnter your choice (1-3): ")
+        
+        if choice == "1":
+            try:
+                n = int(input("How many terms? "))
+                print_fibonacci_terms(n)
+            except ValueError:
+                print("Error: Please enter a valid integer.")
+        
+        elif choice == "2":
+            try:
+                num = int(input("Enter a number to check: "))
+                check_fibonacci_number(num)
+            except ValueError:
+                print("Error: Please enter a valid integer.")
+        
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        
+        else:
+            print("Invalid choice. Please enter 1-3.")
+
+
+if __name__ == "__main__":
+    main()
+
+
